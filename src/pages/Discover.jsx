@@ -6,7 +6,7 @@ import { useGetChartsQuery } from '../redux/services/shazam';
 const Discover = () => {
   const { data, isFetching, error } = useGetChartsQuery();
   const genreTitle = 'Pop';
-  // console.log(data.tracks);
+  console.log(data?.tracks);
   if (isFetching) return <Loader title="Loading songs..." />;
   if (error) return <Error title="Error loading songs" />;
   return (
@@ -28,7 +28,7 @@ const Discover = () => {
         </select>
       </div>
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-        {data.tracks.map((song, i) => (
+        {data?.tracks.map((song, i) => (
           <SongCard key={song.key} song={song} i={i} />
         ))}
       </div>
